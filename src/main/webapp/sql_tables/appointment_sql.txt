@@ -1,0 +1,88 @@
+   desc appointment;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ APPOINTMENT_ID                            NOT NULL NUMBER(38)
+ PATIENT_FNAME                                      VARCHAR2(30)
+ PATIENT_GENDER                                     VARCHAR2(6)
+ PATIENT_AGE                                        NUMBER(38)
+ PATIENT_MBLNO                                      VARCHAR2(12)
+ PATIENT_EMAIL                                      VARCHAR2(50)
+ APPOINTMENT_TYPE                                   VARCHAR2(10)
+ APPOINTMENT_DATE                                   VARCHAR2(12)
+ APPOINTMENT_TIME                                   VARCHAR2(10)
+ PATIENT_PROBLEM                                    VARCHAR2(30)
+ PATIENT_ADDRESS                                    VARCHAR2(50)
+ PATIENT_LNAME                                      VARCHAR2(30)
+ DOCTOR_ID                                          NUMBER(38)
+ PATIENT_ID                                         NUMBER(38)
+ APPOINTMENT_STATUS                                 VARCHAR2(20)
+SQL>
+
+
+----------------------------------------------------------------------
+create table appointment(
+appointment_id int not null primary key,
+patient_fname varchar2(20),
+patient_lname varchar2(20),
+patient_age number(5),
+patient_mblno number(12),
+patient_email varchar2(50),
+appointment_type varchar2(10),
+appointment_date varchar2(15),
+appointment_time varchar2(15),
+patient_problem varchar2(30),
+patient_address varchar2(30),
+doctor_id number(10),
+patient_id number(10),
+appointment_status varcahr2(20) default('pending')
+foreign key (patient_id) references patient(p_id),
+foreign key (doctor_id) references doctor(d_id),
+);
+
+-------------------------------
+alter table appointment add constraint fk_constaint_patient_id foreign key (patient_id) references patient(p_id) on delete cascade;
+
+------------------------------
+alter table appointment add constraint fk_constaint_doctor_id foreign key (doctor_id) references doctor(d_id) on delete cascade;
+
+------------------------
+sequence of appointment:
+------------------------
+
+create sequence seq_appointment start with 501 increment by 1;
+
+-----------------------
+trigger of appointment:
+------------------------
+
+create trigger appointment_trigger
+before insert 
+on appointment
+for each row
+begin
+select seq_appointment.nextval into:new.appointment_id from dual;
+end;
+/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

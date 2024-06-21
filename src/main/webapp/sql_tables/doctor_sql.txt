@@ -1,0 +1,62 @@
+  desc doctor
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ D_ID                                      NOT NULL NUMBER(38)
+ D_NAME                                             VARCHAR2(35)
+ D_SPEC                                             VARCHAR2(20)
+ D_MBLNO                                            VARCHAR2(10)
+ D_EMAIL                                            VARCHAR2(40)
+ D_ADDRESS                                          VARCHAR2(20)
+ D_QUAL                                             VARCHAR2(30)
+ D_EXP                                              NUMBER(38)
+ D_IMAGE                                            BLOB
+ D_DEPT                                             VARCHAR2(30)
+ D_PWD                                              NUMBER(12)
+ D_USERNAME                                         VARCHAR2(35)
+
+-----------------------------------------------------------------
+
+create table doctor(
+d_id int not null primary key,
+d_name varcahr2(30),
+d_spec varcha2(30),
+d_qual varcha2(30),
+d_mblno varcha2(12),
+d_email varcha2(40),
+d_address varcha2(30),
+d_exp number(2),
+d_image blob,
+d_dept varcha2(30),
+d_pwd number(12),
+d_username varcha2(35));
+
+-----------------------------------------------------
+
+--------------------
+Sequence of doctor:
+--------------------
+create sequence seq_doctor start with 100 increment by 1;
+
+---------------------
+trigger of doctor:
+---------------------
+
+create trigger doctor_trigger
+before insert 
+on doctor
+for each row
+begin
+select seq_doctor.nextval into:new.d_id from dual;
+end;
+/
+
+
+
+
+
+
+
+
+
+
+

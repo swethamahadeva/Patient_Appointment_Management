@@ -1,0 +1,44 @@
+desc admin;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ADMIN_ID                                           NUMBER(38)
+ ADMIN_NAME                                         VARCHAR2(30)
+ ADMIN_EMAIL                                        VARCHAR2(30)
+ ADMIN_MBLNO                                        VARCHAR2(12)
+ ADMIN_ADDRESS                                      VARCHAR2(30)
+ ADMIN_PWD                                          NUMBER(38)
+ ADMIN_IMAGE                                        BLOB
+
+
+
+-----------------------------------------------------------------
+
+create table admin(
+admin_id int not null primary key,
+admin_name varcahr2(30),
+admin_email varchar2(40),
+admin_mblno varchar2(12),
+admin_pwd number(10),
+admin_address varchar2(30),
+admin_image blob);
+
+
+-----------------------------------------------------
+
+--------------------
+Sequence of admin:
+--------------------
+create sequence seq_admin start with 1741 increment by 1;
+
+---------------------
+trigger of admin:
+---------------------
+
+create trigger admin_trigger
+before insert 
+on admin
+for each row
+begin
+select seq_admin.nextval into:new.admin_id from dual;
+end;
+/

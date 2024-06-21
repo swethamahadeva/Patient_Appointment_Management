@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<a href="viewpatient.jsp">View All Records</a><br/>  
+  
+<h1>Add New User</h1>  
+<form action="patientadduser.jsp" method="post">  
+<table border="1">  
+ <tr><td>Name:</td><td><input type="text" name="p_name"/></td></tr>
+ <tr><td>Gender:</td>
+ <td><input type="radio" name="p_gender" value="Male">Male
+	 <input type="radio" name="p_gender" value="Female">Female</td>
+</tr>
+ <tr><td>Mobile no:</td><td><input type="text" name="p_mblno"/></td></tr>
+ <tr><td>Email:</td>
+	 <td><input type="text" name="p_email"/></td></tr>
+	 <tr><td>Address:</td>
+	 <td><input type="text" name="p_address"/></td>
+</tr>
+<tr><td>Password:</td><td><input type="password" name="p_pwd"/></td></tr>	 
+<tr>	
+<td colspan="2"><input type="submit" value="Add User"/></td></tr>
+</table>  
+</form>  
+</body>
+</html>
